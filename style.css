@@ -1,1 +1,26 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #222;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: 'Courier New', Courier, monospace;
+    overflow: hidden;
+    color: white;
+}
 
+#ui {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    font-size: 24px;
+    z-index: 10;
+}
+
+canvas {
+    background: linear-gradient(#87CEEB, #E0F6FF);
+    border: 5px solid #fff;
+    box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
