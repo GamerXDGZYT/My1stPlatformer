@@ -3,20 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>3D Emblem Maker</title>
+    <title>3D Emblem Studio</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
     <div id="ui-container">
-        <h2>Emblem Maker</h2>
+        <h2>Emblem Studio</h2>
         
         <div class="control-group">
-            <label for="emblemColor">Emblem Color:</label>
-            <input type="color" id="emblemColor" value="#ffd700">
-        </div>
-
-        <div class="control-group">
-            <label for="shapeSelect">Choose Shape:</label>
+            <label for="shapeSelect">Base Shape</label>
             <select id="shapeSelect">
                 <option value="coin">Classic Coin</option>
                 <option value="square">Square Plaque</option>
@@ -25,10 +21,32 @@
             </select>
         </div>
 
-        <button id="toggleSpin">Stop Spinning</button>
+        <div class="control-group">
+            <label for="materialSelect">Material Style</label>
+            <select id="materialSelect">
+                <option value="metal">Polished Metal</option>
+                <option value="plastic">Vibrant Plastic</option>
+                <option value="glass">Frosted Glass</option>
+            </select>
+        </div>
+
+        <div class="control-group">
+            <label for="emblemColor">Color</label>
+            <input type="color" id="emblemColor" value="#ffd700">
+        </div>
+
+        <div class="control-group">
+            <label for="emblemText">Center Initials (Max 3)</label>
+            <input type="text" id="emblemText" value="A" maxlength="3">
+        </div>
+
+        <button id="toggleSpin" class="btn">Stop Spinning</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/geometries/TextGeometry.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.128.0/examples/js/loaders/FontLoader.js"></script>
+    
     <script src="main.js"></script>
 </body>
 </html>
