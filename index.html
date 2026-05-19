@@ -4,69 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>3D Emblem Maker</title>
-    <style>
-        body { margin: 0; overflow: hidden; background-color: #282c34; }
-        #ui-container { position: absolute; top: 10px; left: 10px; color: white; font-family: sans-serif; }
-    </style>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <div id="ui-container">
         <h2>Emblem Maker</h2>
-        <button id="changeColorBtn">Change Color</button>
+        
+        <div class="control-group">
+            <label for="emblemColor">Emblem Color:</label>
+            <input type="color" id="emblemColor" value="#ffd700">
+        </div>
+
+        <div class="control-group">
+            <label for="shapeSelect">Choose Shape:</label>
+            <select id="shapeSelect">
+                <option value="coin">Classic Coin</option>
+                <option value="square">Square Plaque</option>
+                <option value="diamond">3D Diamond</option>
+                <option value="star">Star Badge</option>
+            </select>
+        </div>
+
+        <button id="toggleSpin">Stop Spinning</button>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-    <script>
-        // 1. Setup Scene, Camera, and Renderer
-        const scene = new THREE.Scene();
-        const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-        const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
-        renderer.setSize(window.innerWidth, window.innerHeight);
-        document.body.appendChild(renderer.domElement);
-
-        // 2. Create the Emblem Base (A flat cylinder like a coin)
-        const geometry = new THREE.CylinderGeometry(2, 2, 0.2, 64);
-        const material = new THREE.MeshStandardMaterial({ 
-            color: 0xffd700, // Gold color
-            metalness: 0.8, 
-            roughness: 0.2 
-        });
-        const emblem = new THREE.Mesh(geometry, material);
-        
-        // Tilt it so we can see the face
-        emblem.rotation.x = Math.PI / 2;
-        scene.add(emblem);
-
-        // 3. Add Lighting so the metal shines
-        const light = new THREE.DirectionalLight(0xffffff, 1);
-        light.position.set(5, 5, 5);
-        scene.add(light);
-        const ambientLight = new THREE.AmbientLight(0x404040, 2);
-        scene.add(ambientLight);
-
-        camera.position.z = 5;
-
-        // 4. Animation Loop (The Viewer aspect)
-        function animate() {
-            requestAnimationFrame(animate);
-            emblem.rotation.y += 0.01; // Slowly spin the emblem
-            emblem.rotation.x += 0.005;
-            renderer.render(scene, camera);
-        }
-        animate();
-
-        // 5. The "Maker" aspect: Interactivity
-        document.getElementById('changeColorBtn').addEventListener('click', () => {
-            // Randomize the color when the button is clicked
-            material.color.setHex(Math.random() * 0xffffff);
-        });
-
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            renderer.setSize(window.innerWidth, window.innerHeight);
-            camera.aspect = window.innerWidth / window.innerHeight;
-            camera.updateProjectionMatrix();
-        });
-    </script>
+    <script src="main.js"></script>
 </body>
 </html>
